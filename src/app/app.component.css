@@ -1,0 +1,7 @@
+.app-content {
+  margin-left: 220px; /* espacio para el sidebar */
+  padding: 20px;
+  min-height: calc(100vh - 60px); /* ocupa toda la pantalla menos el header/footer */
+  background: #f5f6fa;
+}
+

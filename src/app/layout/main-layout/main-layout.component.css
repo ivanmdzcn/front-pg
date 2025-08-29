@@ -1,0 +1,39 @@
+/* Grid de 3 filas: header (60px) / body (resto) / footer (44px aprox) */
+.layout {
+  display: grid;
+  grid-template-rows: 60px 1fr auto;
+  min-height: 100vh;
+}
+
+/* Fila central: sidebar + contenido en flex horizontal */
+.body {
+  display: flex;
+  min-height: 0;         /* para que overflow funcione bien */
+}
+
+/* Sidebar “normal” y colapsado */
+.sidebar {
+  width: 220px;
+  background: #34495e;
+  color: #fff;
+  transition: width .25s ease;
+  overflow: auto;
+}
+.sidebar.collapsed {
+  width: 0;
+}
+
+/* Área de contenido ocupa el resto y hace scroll si hace falta */
+.content {
+  flex: 1;
+  padding: 20px;
+  background: #f5f6fa;
+  overflow: auto;
+}
+
+/* Responsive: en móviles ocultamos la barra lateral por defecto */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 0;
+  }
+}

@@ -1,0 +1,16 @@
+<!-- Un grid de 3 filas: header / body / footer -->
+<div class="layout">
+  <!-- fila 1: header -->
+  <app-header (menuToggle)="sidebarOpen = !sidebarOpen"></app-header>
+
+  <!-- fila 2: body (sidebar + content) -->
+  <div class="body">
+    <app-sidebar class="sidebar" [class.collapsed]="!sidebarOpen"></app-sidebar>
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+  <!-- fila 3: footer -->
+  <app-footer></app-footer>
+</div>

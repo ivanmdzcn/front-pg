@@ -1,0 +1,43 @@
+.app-header {
+  height: 60px;
+  background: #2f4251;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.menu-btn,
+.logout-btn {
+  border: none;
+  outline: none;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.menu-btn {
+  background: #1f2c36;
+  color: #fff;
+  font-size: 18px;
+}
+
+.logout-btn {
+  background: #e74c3c;
+  color: #fff;
+  font-weight: 600;
+}
+.logout-btn:hover { filter: brightness(1.05); }
