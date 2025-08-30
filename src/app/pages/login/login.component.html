@@ -5,15 +5,12 @@
 
     <form (ngSubmit)="login()">
         <!-- <label for="usuario">Usuario:</label> -->
-        <input type="text" id="usuario" [(ngModel)]="usuario" name="usuario" placeholder="Usuario"/>
-
+        <input type="text" id="usuario" [(ngModel)]="usuario" name="usuario" placeholder="Usuario" />
         <!-- <label for="password">Contraseña:</label> -->
-        <!-- <input type="password" id="password" [(ngModel)]="password" name="password" placeholder="Contraseña"/> -->
-        <input type="password" id="password" [(ngModel)]="contrasena" name="password" placeholder="Contraseña"/>
-
-        <button type="submit">Ingresar</button>
+        <input type="password" id="password" [(ngModel)]="contrasena" name="password" placeholder="Contraseña" />
+        <button class="btn-login" type="submit">Ingresar</button>
     </form>
 
     <p style="color:red" *ngIf="error">{{ error }}</p>
-    
+
 </div>

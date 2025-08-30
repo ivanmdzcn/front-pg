@@ -1,0 +1,42 @@
+<h2>Causantes</h2>
+
+<div *ngIf="loading">Cargando...</div>
+<div *ngIf="error" style="color:#b00020">{{ error }}</div>
+
+<table *ngIf="!loading && !error && data.length" class="tabla">
+  <thead>
+    <tr>
+      <th>Caso</th>
+      <th>Afiliacion</th>
+      <th>Nombre</th>
+      <th>Estado</th>
+      <th>Fecha Registro</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of data">
+      <td>{{ c.codigo }}</td>
+      <td>{{ c.afi }}</td>
+      <td>{{ c.nombreCompleto }}</td>
+      <td>
+        <span class="badge" [class.ok]="c.estado==='A'" [class.bad]="c.estado!=='A'">
+          {{ estadoTexto(c.estado) }}
+        </span>
+      </td>
+      <td>{{ c.fechaRegistro }}</td>
+      <td>
+        <!-- <a [routerLink]="['/causantes', c.codigo, 'editar']">✏️ Editar</a> -->
+        <a [routerLink]="['/causantes', c.codigo, 'editar']" class="btn-edit">✏️</a>
+        <!-- <button (click)="confirmarEliminar(c.codigo)" class="btn-delete">🗑</button> -->
+        <button (click)="confirmarEliminar(c.codigo, c.nombreCompleto)" class="btn-delete">
+          🗑 
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!loading && !error && !data.length">
+  No hay causantes registrados.
+</div>

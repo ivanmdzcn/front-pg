@@ -18,23 +18,25 @@ input[type=password] {
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  border: 2px solid green;
+  border: 2px solid #2f4251;
   border-radius: 4px;
 }
 
-button {
+.btn-login {
   background-color: #04AA6D;
-  padding: 0.5rem 1rem;
-  color: white;
-  cursor: pointer;
+  background: #2f4251;
+  color: #fff;
   border: none;
+  padding: 8px 3px;
   border-radius: 4px;
+  text-decoration: none;
   font-size: 14px;
+
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-button:hover {
-  background-color: #037a52;
+.btn-login:hover {
+  background: #1c2c38;
   transform: translateY(-2px);
 }
-

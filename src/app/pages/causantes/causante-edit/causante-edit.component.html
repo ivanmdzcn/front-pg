@@ -1,0 +1,62 @@
+<h2>Editar Causante</h2>
+
+<div *ngIf="loading">Cargando...</div>
+<p *ngIf="error" class="error">{{ error }}</p>
+
+<form *ngIf="!loading" [formGroup]="form" (ngSubmit)="guardar()" class="form">
+  <div class="row">
+    <label>Afiliado *</label>
+    <input formControlName="afi" />
+    <small *ngIf="f.afi.touched && f.afi.invalid">Requerido</small>
+  </div>
+
+  <div class="row two">
+    <div>
+      <label>Primer Nombre *</label>
+      <input formControlName="nombre1" />
+      <small *ngIf="f.nombre1.touched && f.nombre1.invalid">Requerido</small>
+    </div>
+    <div>
+      <label>Segundo Nombre</label>
+      <input formControlName="nombre2" />
+    </div>
+  </div>
+
+  <div class="row two">
+    <div>
+      <label>Primer Apellido *</label>
+      <input formControlName="apellido1" />
+      <small *ngIf="f.apellido1.touched && f.apellido1.invalid">Requerido</small>
+    </div>
+    <div>
+      <label>Segundo Apellido</label>
+      <input formControlName="apellido2" />
+    </div>
+  </div>
+
+  <div class="row">
+    <label>Dirección *</label>
+    <input formControlName="direccion" />
+    <small *ngIf="f.direccion.touched && f.direccion.invalid">Mínimo 5 caracteres</small>
+  </div>
+
+  <div class="row two">
+    <div>
+      <label>DPI (13 dígitos) *</label>
+      <input formControlName="dpi" />
+      <small *ngIf="f.dpi.touched && f.dpi.invalid">Debe tener 13 dígitos numéricos</small>
+    </div>
+    <div>
+      <label>Estado *</label>
+      <select formControlName="estado">
+        <option value="A">Activo</option>
+        <option value="B">Baja</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button type="submit" [disabled]="loading">Actualizar</button>
+    <button type="button" (click)="cancelar()">Cancelar</button>
+  </div>
+</form>

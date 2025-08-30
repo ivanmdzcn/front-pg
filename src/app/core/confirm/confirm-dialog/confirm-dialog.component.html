@@ -1,0 +1,14 @@
+<div class="backdrop" *ngIf="open">
+  <div class="modal">
+    <h3>{{ opts.title }}</h3>
+    <p class="message" [innerHTML]="opts.message"></p>
+    <div class="actions">
+      <button class="btn" (click)="handle(false)">
+        {{ opts.cancelText }}
+      </button>
+      <button class="btn danger" (click)="handle(true)">
+        {{ opts.confirmText }}
+      </button>
+    </div>
+  </div>
+</div>
