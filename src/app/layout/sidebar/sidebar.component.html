@@ -1,9 +1,25 @@
 <nav class="sidebar" [class.open]="isOpen">
-  <ul>
-    <li><a routerLink="/home">🏠 Home</a></li>
-    <li><a routerLink="/causantes">👤 Causantes</a></li>
-<li><a routerLink="/causantes/nuevo">➕ Nuevo causante</a></li>
-    <li><a routerLink="/usuarios">👥 Usuarios</a></li>
-    <li><a routerLink="/reportes">📊 Reportes</a></li>
+  <ul class="menu">
+    <!-- Home -->
+    <li><a routerLink="/home" routerLinkActive="active">🏠 Home</a></li>
+
+    <!-- Grupo: Pensiones por muerte -->
+    <li class="group">
+      <button class="group-toggle" (click)="togglePm()" [attr.aria-expanded]="pmOpen">
+        <span>🕊️ Pensiones por muerte</span>
+        <span class="caret" [class.open]="pmOpen">▸</span>
+      </button>
+
+      <ul class="submenu" [class.open]="pmOpen">
+        <li><a routerLink="/causantes" routerLinkActive="active">👤 Causantes</a></li>
+        <li><a routerLink="/causantes/nuevo" routerLinkActive="active">➕ Nuevo causante</a></li>
+        <li><a routerLink="/borrador-nomina" routerLinkActive="active">🧾 Borrador de nómina</a></li>
+        <li><a routerLink="/reportes" routerLinkActive="active">📊 Reportes</a></li>
+      </ul>
+    </li>
+
+    <!-- Usuarios -->
+    <li><a routerLink="/usuarios" routerLinkActive="active">👥 Usuarios</a></li>
+
   </ul>
 </nav>

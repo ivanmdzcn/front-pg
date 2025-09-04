@@ -25,6 +25,9 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(data: LoginRequest): Observable<LoginResponse> {
+    debugger;
+    console.log('URL de API:', this.BASE_URL);
+    console.log('Datos recibidos en servicio:', data);
     return this.http.post<LoginResponse>(this.BASE_URL, data);
   }
 }

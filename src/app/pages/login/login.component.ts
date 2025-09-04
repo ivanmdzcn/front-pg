@@ -11,6 +11,7 @@ import { AuthService, LoginResponse } from '../../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']      // <-- plural y array
 })
+
 export class LoginComponent {
   usuario: string = '';
   contrasena: string = '';
@@ -19,6 +20,7 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   login(): void {
+     debugger;
     if (!this.usuario || !this.contrasena) {
       this.error = 'Ingrese usuario y contraseña.';
       return;
@@ -29,10 +31,14 @@ export class LoginComponent {
       usuario: this.usuario,
       contrasena: this.contrasena            // <-- C# usa "Contrasena" => JSON "contrasena"
     };
+    debugger;
+    console.log('Datos enviados:', body);
 
     this.authService.login(body).subscribe({
       next: (res: LoginResponse) => {
         localStorage.setItem('token', res.token);
+        // ✅ GUARDAR EL USUARIO EN LOCALSTORAGE
+        localStorage.setItem('usuario', this.usuario);
         this.router.navigate(['/home']);
       },
       error: (err) => {

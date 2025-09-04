@@ -1,9 +1,15 @@
 <header class="app-header">
   <button class="menu-btn" (click)="toggleSidebar()">☰</button>
 
-  <h1 class="title">IGSS - PENSIONES POR MUERTE</h1>
+  <h1 class="title">INSTITUTO GUATEMALTECO DE SEGURIDAD SOCIAL - IGSS</h1> 
 
   <div class="spacer"></div>
-
-  <button class="logout-btn" (click)="logout()">Salir</button>
+  <!-- ✅ MOSTRAR USUARIO Y BOTÓN DE SALIR -->
+  <div class="user-section">
+    <span class="user-name" *ngIf="usuario">
+      <span class="user-icon">👤</span> <!-- Emoticono de usuario -->
+      Usuario: {{ usuario }} <b></b>
+    </span>
+    <button class="logout-btn" (click)="logout()">Salir</button>
+  </div>
 </header>
