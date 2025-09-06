@@ -5,6 +5,7 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
 import { CausanteListComponent } from './pages/causantes/causante-list/causante-list.component';
 import { CausanteCreateComponent } from './pages/causantes/causante-create/causante-create.component';
 import { CausanteEditComponent } from './pages/causantes/causante-edit/causante-edit.component';
+import { authGuard } from './core/auth.guard';
 
 
 export const routes: Routes = [
@@ -15,6 +16,8 @@ export const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
+    canActivate: [authGuard],        // 👈 protege el layout
+    canActivateChild: [authGuard],   // 👈 protege también los hijos
     children: [
       // agrega aquí más rutas protegidas por layout:
       { path: 'home', component: HomeComponent },

@@ -1,0 +1,13 @@
+services:
+  frontend:
+    build: .
+    container_name: frontend-container
+    ports:
+      - "4200:80"            # Host:Container
+    restart: unless-stopped
+    networks:
+      - igss-network
+
+networks:
+  igss-network:
+    external: true
