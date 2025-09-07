@@ -1,6 +1,10 @@
 services:
   frontend:
-    build: .
+    build: 
+    context: .
+    dockerfile: Dockerfile
+    args:
+      BUILD_CONF: ${FRONT_BUILD_CONF:-development}  # 👈 default a development    
     container_name: frontend-container
     ports:
       - "4200:80"            # Host:Container
