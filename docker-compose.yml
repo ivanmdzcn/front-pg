@@ -1,13 +1,13 @@
 services:
   frontend:
     build:
-    context: .
-    dockerfile: Dockerfile
-    args:
-      BUILD_CONF: ${FRONT_BUILD_CONF:-development}  # 👈 default a development    
+      context: .
+      dockerfile: Dockerfile    
+      args:
+        BUILD_CONF: ${FRONT_BUILD_CONF:-development}  
     container_name: frontend-container
     ports:
-      - "4200:80"            # Host:Container
+      - "4200:80"           
     restart: unless-stopped
     networks:
       - igss-network
@@ -15,3 +15,4 @@ services:
 networks:
   igss-network:
     external: true
+
