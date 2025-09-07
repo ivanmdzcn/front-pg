@@ -1,6 +1,6 @@
 services:
   frontend:
-    build: 
+    build:
     context: .
     dockerfile: Dockerfile
     args:
