@@ -1,4 +1,11 @@
-<h2>Causantes</h2>
+<div class="header-row">
+  <h2>Causantes</h2>
+
+  <div class="search-box">
+    <input type="text" [formControl]="search" placeholder="Buscar causante...">
+    <span class="icon">🔍</span>
+  </div>
+</div>
 
 <div *ngIf="loading">Cargando...</div>
 <div *ngIf="error" style="color:#b00020">{{ error }}</div>
@@ -25,14 +32,15 @@
         </span>
       </td>
       <td>{{ c.fechaRegistro }}</td>
-      <td>
-        <!-- <a [routerLink]="['/causantes', c.codigo, 'editar']">✏️ Editar</a> -->
-        <a [routerLink]="['/causantes', c.codigo, 'editar']" class="btn-edit">✏️</a>
-        <!-- <button (click)="confirmarEliminar(c.codigo)" class="btn-delete">🗑</button> -->
-        <button (click)="confirmarEliminar(c.codigo, c.nombreCompleto)" class="btn-delete">
-          🗑 
-        </button>
+
+      <td class="col-acciones">
+        <div class="acciones">
+          <a [routerLink]="['/beneficiarios', c.codigo]" class="btn-benef">👥</a>
+          <a [routerLink]="['/causantes', c.codigo, 'editar']" class="btn-edit">✏️</a>
+          <button (click)="confirmarEliminar(c.codigo, c.nombreCompleto)" class="btn-delete">🗑</button>
+        </div>
       </td>
+
     </tr>
   </tbody>
 </table>

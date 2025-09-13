@@ -1,0 +1,70 @@
+<!-- Encabezado verde -->
+<div class="header-green">
+  <div class="row">
+    <div><b>Caso:</b> {{ causanteId }}</div>
+    <div><b>Causante:</b> {{ nombreCompleto }}</div>
+    <div><b>Afiliación:</b> {{ afi }}</div>
+  </div>
+
+  <div *ngIf="headerLoading" class="muted">Cargando encabezado…</div>
+  <div *ngIf="headerError" class="error">{{ headerError }}</div>
+</div>
+
+<!-- Detalle (contenedor rojo) -->
+<div class="detail-red">
+  <div class="detail-header">
+    <h3>Beneficiarios</h3>
+    <!-- En el siguiente paso habilitamos este botón -->
+    <!-- <button class="btn-primary" disabled>Nuevo beneficiario</button> -->
+    <a class="btn-add" [routerLink]="['/beneficiarios', causanteId, 'nuevo']" title="Nuevo beneficiario">
+      ➕
+    </a>
+
+  </div>
+
+  <!-- Estados de carga/error del detalle -->
+  <div *ngIf="listLoading" class="muted">Cargando beneficiarios…</div>
+  <div *ngIf="listError" class="error">{{ listError }}</div>
+
+  <!-- Tabla de beneficiarios -->
+  <table *ngIf="!listLoading && !listError" class="tabla">
+    <thead>
+      <tr>
+        <th style="width:60px;">#</th>
+        <th style="width:90px;">Código</th> <!-- bencod -->
+        <th>Nombre</th> <!-- bennoc -->
+        <th style="width:170px;">DPI</th> <!-- bendpi -->
+        <th style="width:170px;">Parentesco</th> <!-- benpar -->
+        <th style="width:120px;">Monto</th> <!-- benmon -->
+        <th style="width:120px;">Estado</th> <!-- bensit -->
+        <th class="col-acciones">Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let b of data; let i = index">
+        <td>{{ b.bencau }}</td>
+        <td>{{ b.bencod }}</td>
+        <td>{{ b.bennoc }}</td>
+        <td>{{ b.bendpi }}</td>
+        <td>{{ parentescoTexto(b.benpar) }}</td>
+        <td>{{ b.benmon | number:'1.2-2' }}</td>
+        <td>
+          <span class="badge" [class.ok]="b.bensit==='V'" [class.bad]="b.bensit!=='V'">
+            {{ situacionTexto(b.bensit) }}
+          </span>
+        </td>
+        <td class="col-acciones">
+          <div class="acciones">
+            <a class="btn-edit" [routerLink]="['/beneficiarios', causanteId, b.bencod, 'editar']" title="Editar">✏️</a>
+            <button class="btn-delete" (click)="confirmarEliminar(b.bencod, b.bennoc)" title="Eliminar">🗑</button>
+          </div>
+        </td>
+      </tr>
+
+      <tr *ngIf="data.length === 0">
+        <td colspan="8" class="muted">No hay beneficiarios registrados.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

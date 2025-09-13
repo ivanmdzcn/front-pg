@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 // Ajusta la ruta si tu carpeta de environments está en otro lugar:
 import { environment } from '../environments/environment';
@@ -43,8 +43,12 @@ export interface CausanteEdit {
 export class CausanteService {
   private http = inject(HttpClient);
 
-  listar(): Observable<CausanteItem[]> {
-    return this.http.get<CausanteItem[]>(BASE_URL);
+  listar(q: string =''): Observable<CausanteItem[]> {
+    let params = new HttpParams();
+    if(q && q.trim()){
+      params = params.set('q',q.trim());
+    }
+    return this.http.get<CausanteItem[]>(BASE_URL,{params});
   }
 
   obtenerPorId(id: number): Observable<CausanteEdit> {

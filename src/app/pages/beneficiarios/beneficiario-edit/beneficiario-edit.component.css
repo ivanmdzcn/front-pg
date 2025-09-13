@@ -1,0 +1,22 @@
+.form { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:16px; }
+.grid {
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:12px;
+}
+@media (max-width: 920px){ .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px){ .grid { grid-template-columns: 1fr; } }
+
+label { display:flex; flex-direction:column; gap:6px; font-size:14px; }
+input, select {
+  padding:8px 10px; border:1px solid #d1d5db; border-radius:8px; outline:none; background:#fff;
+}
+input:focus, select:focus { border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,0.12); }
+
+.form-actions { margin-top:12px; display:flex; gap:10px; }
+.form-actions button {
+  background:#1e3a8a; color:#fff; border:none; border-radius:8px; padding:8px 12px; cursor:pointer;
+}
+.form-actions a { color:#1e3a8a; text-decoration:none; padding:8px 12px; }
+
+.error { color:#b00020; margin-top:8px; }

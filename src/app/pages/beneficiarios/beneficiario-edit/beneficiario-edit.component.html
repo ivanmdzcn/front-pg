@@ -1,0 +1,86 @@
+<h2>Editar Beneficiario</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()" class="form">
+  <div class="grid">
+    <label>
+      <span>Causante</span>
+      <input type="text" formControlName="bencau"  />
+    </label>
+
+    <label>
+      <span>Número beneficiario</span>
+      <input type="number" formControlName="bencod"  />
+    </label>
+
+    <label>
+      <span>Nombre 1</span>
+      <input type="text" formControlName="benno1" />
+    </label>
+
+    <label>
+      <span>Nombre 2</span>
+      <input type="text" formControlName="benno2" />
+    </label>
+
+    <label>
+      <span>Apellido 1</span>
+      <input type="text" formControlName="benap1" />
+    </label>
+
+    <label>
+      <span>Apellido 2</span>
+      <input type="text" formControlName="benap2" />
+    </label>
+
+    <label>
+      <span>Resolucion</span>
+      <input type="text" formControlName="benres" />
+    </label>
+
+    <label>
+      <span>DPI</span>
+      <input type="text" formControlName="bendpi" maxlength="13" />
+    </label>
+
+    <label>
+      <span>Parentesco</span>
+      <select formControlName="benpar">
+        <option value="" disabled>Seleccione…</option>
+        <option *ngFor="let p of parentescos" [value]="p.value">{{ p.label }}</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Monto</span>
+      <input type="number" formControlName="benmon" step="0.01" min="0" />
+    </label>
+
+    <label>
+      <span>Situación</span>
+      <select formControlName="bensit">
+        <option *ngFor="let s of situaciones" [value]="s.value">{{ s.label }}</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Terminación</span>
+      <select formControlName="bentrm">
+        <option [ngValue]="null">—</option>
+        <option *ngFor="let t of terminaciones" [ngValue]="t.value">{{ t.label }}</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Año terminación</span>
+      <input type="number" formControlName="benate" />
+    </label>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" [disabled]="saving || form.invalid">Guardar</button>
+    <a [routerLink]="['/beneficiarios', bencau]">Cancelar</a>
+  </div>
+
+  <div *ngIf="loading" class="muted">Cargando…</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+</form>

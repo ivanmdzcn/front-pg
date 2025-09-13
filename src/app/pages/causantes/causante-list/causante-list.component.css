@@ -1,12 +1,39 @@
+/* ======== TABLA ======== */
 .tabla {
   width: 100%;
   border-collapse: collapse;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
+  table-layout: auto;
+  /* deja que la col. Acciones respete su min-width */
+
 }
-th, td { padding: 10px 12px; border-bottom: 1px solid #eee; text-align: left; }
-thead tr { background: #f3f5f7; }
+
+th,
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+thead tr {
+  background: #f3f5f7;
+}
+
+/* Columna Acciones con ancho mínimo para que NO rompa línea */
+th.col-acciones,
+td.col-acciones {
+  width: 1%;
+  /* truco para que use el mínimo posible */
+  white-space: nowrap;
+}
+
+td.col-acciones {
+  text-align: right;
+}
+
+/* ======== ESTADO ======== */
 .badge {
   display: inline-block;
   padding: 2px 8px;
@@ -14,13 +41,107 @@ thead tr { background: #f3f5f7; }
   font-size: 12px;
   background: #ddd;
 }
-.badge.ok { background: #e6f6ec; color: #2f8f4e; }
-.badge.bad { background: #fde7e7; color: #c0392b; }
 
-/* boton para editar */
+.badge.ok {
+  background: #e6f6ec;
+  color: #2f8f4e;
+}
 
-.acciones { display: flex; gap: .5rem; }
-.btn-edit { background:#2f4251; color:#fff; border:none; padding:4px 3px; border-radius:4px; text-decoration:none; }
-.btn-edit:hover { background:#1c2c38; }
-.btn-delete { background:#c0392b; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; }
-.btn-delete:hover { background:#992d22; }
+.badge.bad {
+  background: #fde7e7;
+  color: #c0392b;
+}
+
+/* ======== ACCIONES ======== */
+.acciones {
+  display: inline-flex;
+  gap: .5rem;
+  flex-wrap: nowrap;
+  /* ¡clave! no permitir salto */
+  white-space: nowrap;
+  /* evitar wraps de texto/emoji */
+}
+
+.btn-edit {
+  background: #2f4251;
+  color: #fff;
+  border: none;
+  padding: 4px 3px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn-edit:hover {
+  background: #1c2c38;
+}
+
+.btn-delete {
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background: #992d22;
+}
+
+.btn-benef {
+  background: #9798e7;
+  color: #fff;
+  border: none;
+  padding: 4px 3px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn-benef:hover {
+  background: #5456cf;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  /* separa título y buscador */
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.search-box {
+  position: relative;
+  width: min(320px, 100%);
+  flex: 0 1 220px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 8px 32px 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.search-box .icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 14px;
+}
+
+/* opcional: en pantallas pequeñas, que el input salte a la siguiente línea */
+@media (max-width: 640px) {
+  .header-row {
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    flex: 1 1 100%;
+  }
+}

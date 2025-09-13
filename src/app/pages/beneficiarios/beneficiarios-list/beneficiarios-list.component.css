@@ -1,0 +1,121 @@
+/* ===== Encabezado verde ===== */
+.header-green{
+  background: #e9f7ef;       /* verde muy claro */
+  border: 1px solid #b7e2c5;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+}
+
+.header-green .row{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  font-size: 15px;
+}
+
+@media (max-width: 900px){
+  .header-green .row{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Contenedor rojo (detalle) ===== */
+.detail-red{
+  background: #fff5f5;       /* rojo muy claro */
+  border: 1px solid #f3c7c7;
+  border-radius: 12px;
+  padding: 12px 12px 8px;
+}
+
+.detail-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+
+.btn-primary{
+  background:#1e3a8a;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  padding:8px 12px;
+  cursor:not-allowed;  /* habilitaremos en el paso 4 */
+  opacity:.6;
+}
+
+/* ===== Tabla base (coincide con tu estilo) ===== */
+.tabla { 
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+th, td { padding: 10px 12px; border-bottom: 1px solid #eee; text-align: left; }
+thead tr { background: #f3f5f7; }
+
+.muted{ color:#6b7280; }
+.error{ color:#b00020; }
+
+/* Alineación de Acciones (cuando haya) */
+th.col-acciones, td.col-acciones{
+  width:1%;
+  white-space:nowrap;
+  text-align:right;
+}
+
+.btn-add {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: #1e3a8a;   /* azul oscuro */
+  color: #fff;
+  font-size: 20px;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.btn-add:hover {
+  background: #3749a6;   /* azul más claro al pasar */
+}
+
+/* ======== ACCIONES ======== */
+.acciones {
+  display: inline-flex;
+  gap: .5rem;
+  flex-wrap: nowrap;
+  /* ¡clave! no permitir salto */
+  white-space: nowrap;
+  /* evitar wraps de texto/emoji */
+}
+
+.btn-edit {
+  background: #2f4251;
+  color: #fff;
+  border: none;
+  padding: 4px 3px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn-edit:hover {
+  background: #1c2c38;
+}
+
+.btn-delete {
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background: #992d22;
+}

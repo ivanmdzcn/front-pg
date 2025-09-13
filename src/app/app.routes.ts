@@ -21,9 +21,31 @@ export const routes: Routes = [
     children: [
       // agrega aquí más rutas protegidas por layout:
       { path: 'home', component: HomeComponent },
-      { path: 'causantes', component: CausanteListComponent }, 
-      { path: 'causantes/nuevo', component: CausanteCreateComponent },  
-      { path: 'causantes/:id/editar', component: CausanteEditComponent }, 
+      { path: 'causantes', component: CausanteListComponent },
+      { path: 'causantes/nuevo', component: CausanteCreateComponent },
+      { path: 'causantes/:id/editar', component: CausanteEditComponent },
+      // 👇 NUEVO: listado de beneficiarios para un causante
+      {
+        path: 'beneficiarios/:causanteId',
+        loadComponent: () =>
+          import('./pages/beneficiarios/beneficiarios-list/beneficiarios-list.component')
+            .then(m => m.BeneficiariosListComponent)
+      },
+      // 👇 NUEVO
+      {
+        path: 'beneficiarios/:causanteId/nuevo',
+        loadComponent: () =>
+          import('./pages/beneficiarios/beneficiario-create/beneficiario-create.component')
+            .then(m => m.BeneficiarioCreateComponent)
+      },
+
+      //Editar benef
+      {
+        path: 'beneficiarios/:causanteId/:bencod/editar',
+        loadComponent: () =>
+          import('./pages/beneficiarios/beneficiario-edit/beneficiario-edit.component')
+            .then(m => m.BeneficiarioEditComponent)
+      }
     ]
   },
 
