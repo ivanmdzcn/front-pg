@@ -83,7 +83,7 @@
 
   <div class="form-actions">
     <button type="submit" [disabled]="saving || form.invalid">Guardar</button>
-    <a [routerLink]="['/beneficiarios', form.value.bencau || causanteIdParam]">Cancelar</a>
+    <button type="button" [routerLink]="['/beneficiarios', form.value.bencau || causanteIdParam]">Cancelar</button>
   </div>
 
   <div *ngIf="error" class="error">{{ error }}</div>

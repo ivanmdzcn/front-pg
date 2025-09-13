@@ -78,7 +78,7 @@
 
   <div class="form-actions">
     <button type="submit" [disabled]="saving || form.invalid">Guardar</button>
-    <a [routerLink]="['/beneficiarios', bencau]">Cancelar</a>
+    <button [routerLink]="['/beneficiarios', bencau]">Cancelar</button>
   </div>
 
   <div *ngIf="loading" class="muted">Cargando…</div>
