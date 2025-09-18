@@ -1,0 +1,44 @@
+    .header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px
+    }
+
+    .btn-primary {
+        background: #2f4251;
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 6px;
+        text-decoration: none
+    }
+
+    /* ======== TABLA ======== */
+    .tabla {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        table-layout: auto;
+        /* deja que la col. Acciones respete su min-width */
+    }
+
+    th,
+    td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #eee;
+        text-align: left;
+    }
+
+    .btn-edit {
+        background: #2f4251;
+        color: #fff;
+        padding: 4px 8px;
+        border-radius: 4px;
+        text-decoration: none
+    }
+
+    .error {
+        color: #b00020
+    }

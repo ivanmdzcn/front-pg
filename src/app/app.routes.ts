@@ -7,6 +7,11 @@ import { CausanteCreateComponent } from './pages/causantes/causante-create/causa
 import { CausanteEditComponent } from './pages/causantes/causante-edit/causante-edit.component';
 import { authGuard } from './core/auth.guard';
 
+// ...nominas...
+import { NominasListComponent } from './pages/nominas/nominas-list/nominas-list.component';
+import { NominaNewComponent } from './pages/nominas/nomina-new/nomina-new.component';
+
+
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },    // 1) raíz -> login
@@ -45,7 +50,17 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/beneficiarios/beneficiario-edit/beneficiario-edit.component')
             .then(m => m.BeneficiarioEditComponent)
-      }
+      },
+
+      // Nóminas
+      { path: 'nominas', component: NominasListComponent },
+      { path: 'nominas/nueva', component: NominaNewComponent },
+      {
+        path: 'nominas/:id',
+        loadComponent: () =>
+          import('./pages/nominas/nomina-detail/nomina-detail.component')
+            .then(m => m.NominaDetailComponent)
+      },
     ]
   },
 

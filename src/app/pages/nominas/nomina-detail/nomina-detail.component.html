@@ -1,0 +1,100 @@
+<!-- <h2>Nómina</h2> -->
+
+<div *ngIf="loading">Cargando...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div *ngIf="!loading && !error && nomina">
+
+  <!-- Encabezado -->
+  <div class="card header">
+    <div class="row">
+      <div><b>Nomina:</b> {{ nomina.nomcod }}</div>
+      <div><b>Tipo:</b> {{ nomina.nomtip }}</div>
+      <div>
+        <b>Estado:</b>
+        <span class="badge" [class.ok]="nomina.nomstd==='A'" [class.warn]="nomina.nomstd==='B'"
+          [class.bad]="nomina.nomstd==='C'">
+          {{ badgeEstado(nomina.nomstd) }}
+        </span>
+      </div>
+      <div><b>Fecha Inicio:</b> {{ nomina.nomfdi | date:'dd-MM-yyyy' }}</div>
+      <div><b>Fecha Fin:</b> {{ nomina.nomfdf | date:'dd-MM-yyyy' }}</div>
+      <div><b>Usuario:</b> {{ nomina.nomudc }}</div>
+      <div *ngIf="nomina.nomuda"><b>Admin</b> {{ nomina.nomuda }}</div>
+    </div>
+
+    <!-- Acciones de encabezado -->
+    <div class="actions">
+      <button class="btn" *ngIf="nomina.permisos.puedeAutorizar" (click)="autorizar()">Autorizar</button>
+      <button class="btn danger" *ngIf="nomina.permisos.puedeCancelar" (click)="cancelar()">Anular</button>
+      <button class="btn-sec" (click)="cancel()">Regresar</button>
+    </div>
+  </div>
+
+  <!-- Detalle -->
+  <div class="card">
+    <div class="detail-header">
+      <h3>Detalle de Nómina</h3>
+    </div>
+
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th style="width:110px">Causante</th>
+          <th style="width:100px">Beneficiario</th>
+          <th style="width:140px">Monto</th>
+          <th class="col-acciones">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of nomina.detalle">
+          <td>{{ r.detcau }}</td>
+          <td>{{ r.detben }}</td>
+
+          <td *ngIf="editingKey !== (r.detcau + '-' + r.detben)">
+            {{ r.detmon | number:'1.2-2' }}
+          </td>
+          <td *ngIf="editingKey === (r.detcau + '-' + r.detben)">
+            <input type="number" [formControl]="editMonto" class="inp" />
+            <div class="small-error" *ngIf="editMonto.invalid && editMonto.touched">Monto inválido</div>
+          </td>
+
+          <td class="col-acciones">
+            <ng-container *ngIf="nomina.permisos.puedeAgregarDetalle; else viewOnly">
+              <button class="btn-edit" *ngIf="editingKey !== (r.detcau + '-' + r.detben)"
+                (click)="startEdit(r)">✏️</button>
+              <button class="btn" *ngIf="editingKey === (r.detcau + '-' + r.detben)" (click)="saveEdit(r)">💾</button>
+              <button class="btn" *ngIf="editingKey === (r.detcau + '-' + r.detben)" (click)="cancelEdit()">↩︎</button>
+
+              <button class="btn-delete" (click)="eliminar(r)"
+                [disabled]="editingKey === (r.detcau + '-' + r.detben)">🗑</button>
+            </ng-container>
+            <ng-template #viewOnly>
+              <span class="muted">Sin permisos</span>
+            </ng-template>
+          </td>
+        </tr>
+
+        <tr *ngIf="nomina.detalle.length === 0">
+          <td colspan="4" class="muted">No hay datos.</td>
+        </tr>
+
+        <!-- Fila de alta (Opción A: el [formGroup] va en el <tr>) -->
+        <tr *ngIf="nomina.permisos.puedeAgregarDetalle" [formGroup]="addForm">
+          <td>
+            <input type="number" class="inp" placeholder="CAU" formControlName="detcau" />
+          </td>
+          <td>
+            <input type="number" class="inp" placeholder="BEN" formControlName="detben" />
+          </td>
+          <td>
+            <input type="number" class="inp" placeholder="Monto" formControlName="detmon" />
+          </td>
+          <td class="col-acciones">
+            <button class="btn" (click)="agregar()" [disabled]="addForm.invalid">➕ Agregar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

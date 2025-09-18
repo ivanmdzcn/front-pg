@@ -1,0 +1,21 @@
+<h2>Agregar nómina</h2>
+
+<form [formGroup]="form" (ngSubmit)="guardar()" class="form">
+  <label>Tipo</label>
+  <select formControlName="nomtip">
+    <option value="P">Pensionados</option>
+  </select>
+
+  <label>Fecha inicio</label>
+  <input type="date" formControlName="nomfdi">
+
+  <label>Fecha fin</label>
+  <input type="date" formControlName="nomfdf">
+
+  <div class="actions">
+    <button class="btn-primary" [disabled]="form.invalid || loading">Guardar</button>
+    <a class="btn-sec" (click)="cancel()">Regresar</a>
+  </div>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+</form>

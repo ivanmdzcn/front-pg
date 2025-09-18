@@ -1,0 +1,30 @@
+ <div class="header-row">
+    <h2>Nóminas</h2>
+    <a class="btn-primary" [routerLink]="['/nominas/nueva']">+ Nueva</a>
+  </div>
+
+  <div *ngIf="loading">Cargando…</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <table *ngIf="!loading && !error" class="tabla">
+    <thead>
+      <tr>
+        <th>No. Nomina</th>
+        <th>Tipo</th>
+        <th>Estado</th>
+        <th>Rango</th>
+        <th>Creada por</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let n of data">
+        <td>{{ n.nomcod }}</td>
+        <td>{{ n.nomtip }}</td>
+        <td>{{ estado(n.nomstd) }}</td>
+        <td>{{ n.nomfdi | date:'dd-MM-yyyy' }} → {{ n.nomfdf | date:'dd-MM-yyyy' }}</td>
+        <td>{{ n.nomudc }}</td>
+        <td><a [routerLink]="['/nominas', n.nomcod]" class="btn-edit">Ver</a></td>
+      </tr>
+    </tbody>
+  </table>

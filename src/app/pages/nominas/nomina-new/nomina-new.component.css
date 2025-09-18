@@ -1,0 +1,51 @@
+    .form {
+        display: grid;
+        gap: 10px;
+        max-width: 820px;
+        padding: 16px;
+        background: #fff;
+
+        border-radius: 10px;
+    }
+
+    .actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px
+    }
+
+    .btn-primary {
+        background: #465e70;
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: none
+    }
+
+    .btn-primary:hover {
+        background: #114168;
+    }
+
+    .btn-sec {
+        background: #ddd;
+        color: #222;
+        padding: 8px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        cursor: pointer
+    }
+
+    .btn-sec:hover {
+        background: #8b8989;
+    }
+
+    .error {
+        color: #b00020
+    }
+
+    input,
+    select {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+    }
