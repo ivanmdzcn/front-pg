@@ -17,10 +17,10 @@ export class LoginComponent {
   contrasena: string = '';
   error: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   login(): void {
-     debugger;
+    debugger;
     if (!this.usuario || !this.contrasena) {
       this.error = 'Ingrese usuario y contraseña.';
       return;
@@ -46,5 +46,10 @@ export class LoginComponent {
         this.error = 'Usuario o contraseña incorrecta.';
       }
     });
+  }
+  mostrarPassword: boolean = false;
+
+  togglePassword() {
+    this.mostrarPassword = !this.mostrarPassword;
   }
 }

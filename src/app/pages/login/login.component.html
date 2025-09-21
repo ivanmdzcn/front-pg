@@ -1,16 +1,30 @@
 <div class="login-container">
-    <img src="assets/logo-igss.jpg" />
+    <img src="assets/login.jpg" />
 
     <h2>Login</h2>
 
     <form (ngSubmit)="login()">
-        <!-- <label for="usuario">Usuario:</label> -->
+        <!-- Usuario -->
         <input type="text" id="usuario" [(ngModel)]="usuario" name="usuario" placeholder="Usuario" />
-        <!-- <label for="password">Contraseña:</label> -->
-        <input type="password" id="password" [(ngModel)]="contrasena" name="password" placeholder="Contraseña" />
+
+        <!-- Contraseña con ojo -->
+        <div class="password-container">
+            <input [type]="mostrarPassword ? 'text' : 'password'" 
+                   id="password" 
+                   [(ngModel)]="contrasena" 
+                   name="password" 
+                   placeholder="Contraseña" />
+            
+            <!-- Botón del ojito -->
+            <button type="button" class="toggle-password" (click)="togglePassword()">
+                <span *ngIf="!mostrarPassword">👁️</span>
+                <span *ngIf="mostrarPassword">🙈</span>
+            </button>
+        </div>
+
+        <!-- Botón login -->
         <button class="btn-login" type="submit">Ingresar</button>
     </form>
 
     <p style="color:red" *ngIf="error">{{ error }}</p>
-
 </div>

@@ -40,3 +40,23 @@ input[type=password] {
   background: #1c2c38;
   transform: translateY(-2px);
 }
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  flex: 1;
+  padding-right: 40px; /* espacio para el botón */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}

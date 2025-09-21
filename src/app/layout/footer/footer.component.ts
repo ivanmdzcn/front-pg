@@ -8,4 +8,14 @@ import { CommonModule } from '@angular/common';
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css',
 })
-export class FooterComponent {}
+export class FooterComponent {
+  fechaActual: Date = new Date();
+
+  ngOnInit() {
+    setInterval(() => {
+      this.fechaActual = new Date();
+    }, 1000);
+  }
+}
+
+
