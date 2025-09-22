@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-// ⚠️ Ajusta esta ruta si tu environments está en otra carpeta
+// Ajustar esta ruta si environments está en otra carpeta
 import { environment } from '../environments/environment';
 
 const BASE_URL = `${environment.apiUrl}/Beneficiario`;

@@ -20,7 +20,7 @@ export class BeneficiarioCreateComponent implements OnInit {
   private benefSrv = inject(BeneficiarioService);
   private causSrv = inject(CausanteService);
 
-  // catálogo de causantes (puedes paginar/buscar más adelante)
+  // catálogo de causantes 
   causantes: CausanteItem[] = [];
   cargandoCausantes = false;
 
@@ -94,7 +94,7 @@ export class BeneficiarioCreateComponent implements OnInit {
     });
   }
 
-  // catálogos simples (puedes migrarlos a API cuando quieras)
+  // catálogos simples (Pendientes de migrar a API)
   get parentescos() { return [{ value: '1', label: 'Esposa' }, { value: '2', label: 'Compañera de hecho' }]; }
   get situaciones()  { return [{ value: '', label: '—' }, { value: 'V', label: 'Vigente' }, { value: 'T', label: 'Terminado' }]; }
   get terminaciones(){ return [{ value: 1, label: 'Mayoridad' }, { value: 2, label: 'Fallecimiento' }]; }

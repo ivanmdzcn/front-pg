@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient,HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-// Ajusta la ruta si tu carpeta de environments está en otro lugar:
+// Ajustar esta ruta si environments está en otra carpeta
 import { environment } from '../environments/environment';
 
 const BASE_URL = `${environment.apiUrl}/Causante`;
@@ -75,11 +75,11 @@ export class CausanteService {
    * Asegúrate de emitir los claims en el back (p.ej. "usuario", "unique_name", "name").
    */
   private getUsuarioLogueado(): string {
-    // Si guardaste el usuario en localStorage al hacer login, úsalo directo
+    // Se se guarda el usuario el LocalStorage al hacer login
     const u = localStorage.getItem('usuario');
     if (u) return u;
 
-    // Si no, intenta leerlo del JWT
+    // Si no, se intenta leer desde el JWT -- TOKEN
     const token = localStorage.getItem('token');
     if (!token) return 'anonimo';
 

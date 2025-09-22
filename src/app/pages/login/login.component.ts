@@ -26,7 +26,6 @@ export class LoginComponent {
       return;
     }
 
-    // Asegúrate de usar el nombre EXACTO que espera tu API (sin tilde):
     const body = {
       usuario: this.usuario,
       contrasena: this.contrasena            // <-- C# usa "Contrasena" => JSON "contrasena"

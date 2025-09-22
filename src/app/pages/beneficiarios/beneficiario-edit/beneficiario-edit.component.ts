@@ -52,7 +52,7 @@ export class BeneficiarioEditComponent implements OnInit {
     this.bencau = Number(this.route.snapshot.paramMap.get('causanteId')) || 0;
     this.bencod = Number(this.route.snapshot.paramMap.get('bencod')) || 0;
 
-    this.cargarCausantes(); // por si quieres mostrar el nombre del causante en header
+    this.cargarCausantes(); // para mostrar el nombre del causante en header
     this.cargar();
     this.configurarValidacionesCondicionales();
   }

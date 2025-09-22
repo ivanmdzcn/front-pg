@@ -21,22 +21,23 @@ export const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
-    canActivate: [authGuard],        // 👈 protege el layout
-    canActivateChild: [authGuard],   // 👈 protege también los hijos
+    canActivate: [authGuard],        // proteger el layout
+    canActivateChild: [authGuard],   // proteger también los hijos
     children: [
       // agrega aquí más rutas protegidas por layout:
       { path: 'home', component: HomeComponent },
       { path: 'causantes', component: CausanteListComponent },
       { path: 'causantes/nuevo', component: CausanteCreateComponent },
       { path: 'causantes/:id/editar', component: CausanteEditComponent },
-      // 👇 NUEVO: listado de beneficiarios para un causante
+      // NUEVO: listado de beneficiarios para un causante
       {
         path: 'beneficiarios/:causanteId',
         loadComponent: () =>
           import('./pages/beneficiarios/beneficiarios-list/beneficiarios-list.component')
             .then(m => m.BeneficiariosListComponent)
       },
-      // 👇 NUEVO
+
+      // BENEFICIARIO NUEVO 
       {
         path: 'beneficiarios/:causanteId/nuevo',
         loadComponent: () =>
@@ -64,6 +65,6 @@ export const routes: Routes = [
     ]
   },
 
-  // catch-all
+  // catch-all redirejie direccionando a login
   { path: '**', redirectTo: 'login' }
 ];

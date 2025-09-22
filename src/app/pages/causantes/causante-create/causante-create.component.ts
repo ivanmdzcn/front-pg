@@ -25,7 +25,7 @@ export class CausanteCreateComponent {
     direccion: ['', [Validators.required, Validators.minLength(5)]],
     dpi: ['', [Validators.required, Validators.pattern(/^\d{13}$/)]],
     estado: ['A', [Validators.required]],   // por defecto Activo
-    //usuario: ['usuario']                      // puedes setear aquí el usuario logueado
+    //usuario: ['usuario']                      // por si se necesita setear el usuario logueado
   });
 
   error = '';

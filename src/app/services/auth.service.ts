@@ -18,7 +18,7 @@ export interface LoginResponse {
 })
 
 export class AuthService {
-  //private apiUrl = 'http://localhost:3000/login'; // Ajusta la URL según tu backend
+  //private apiUrl = 'http://localhost:3000/login'; // Ajusta la URL según el backend
   // private apiUrl = 'https://localhost:44312/api/Login';
   private BASE_URL = `${environment.apiUrl}/Login`;
 

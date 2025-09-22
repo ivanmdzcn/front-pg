@@ -31,7 +31,7 @@ export class CausanteEditComponent implements OnInit {
     direccion: ['', [Validators.required, Validators.minLength(5)]],
     dpi: ['', [Validators.required, Validators.pattern(/^\d{13}$/)]],
     estado: ['A', Validators.required],
-    //usuario: ['usuario'] // puedes setear aquí el usuario logueado
+    //usuario: ['usuario'] // para setear aquí el usuario logueado
   });
 
   get f() { return this.form.controls; }
