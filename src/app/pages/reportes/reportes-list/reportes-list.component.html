@@ -1,0 +1,36 @@
+<h2>Reportes: Nóminas autorizadas</h2>
+
+<div *ngIf="loading">Cargando…</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<table *ngIf="!loading && !error" class="tabla">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Tipo</th>
+      <th>Del</th>
+      <th>Al</th>
+      <th>Usuario</th>
+      <th>Beneficiarios</th>
+      <th>Total</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let n of data">
+      <td>{{ n.nomcod }}</td>
+      <td>{{ n.nomtip }}</td>
+      <td>{{ n.nomfdi | date:'dd-MM-yyyy' }}</td>
+      <td>{{ n.nomfdf | date:'dd-MM-yyyy' }}</td>
+      <td>{{ n.nomudc }}</td>
+      <td>{{ n.totalBeneficiarios }}</td>
+      <td>{{ n.totalMonto | number:'1.2-2' }}</td>
+      <td><a [routerLink]="['/reportes', n.nomcod]">Ver detalle</a></td>
+    </tr>
+
+    <tr *ngIf="data.length === 0">
+      <td colspan="8" class="muted">Sin resultados</td>
+    </tr>
+  </tbody>
+</table>

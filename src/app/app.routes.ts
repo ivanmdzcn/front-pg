@@ -11,8 +11,6 @@ import { authGuard } from './core/auth.guard';
 import { NominasListComponent } from './pages/nominas/nominas-list/nominas-list.component';
 import { NominaNewComponent } from './pages/nominas/nomina-new/nomina-new.component';
 
-
-
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },    // 1) raíz -> login
   { path: 'login', component: LoginComponent },             // 2) login SIN layout
@@ -61,6 +59,20 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/nominas/nomina-detail/nomina-detail.component')
             .then(m => m.NominaDetailComponent)
+      },
+
+      // Reportes
+      {
+        path: 'reportes',
+        loadComponent: () =>
+          import('./pages/reportes/reportes-list/reportes-list.component')
+            .then(m => m.ReportesListComponent),
+      },
+      {
+        path: 'reportes/:id',
+        loadComponent: () =>
+          import('./pages/reportes/reportes-detalle/reportes-detalle.component')
+            .then(m => m.ReportesDetalleComponent),
       },
     ]
   },
